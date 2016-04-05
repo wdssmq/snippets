@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetListTypeByArray(${1:\$type}, ${2:\$array});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetListTypeByArray</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>查询ID数据的指定类型的sql并返回指定类型对象列表</description>
+</snippet>

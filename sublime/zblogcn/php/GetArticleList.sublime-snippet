@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetArticleList(${1:\$select}, ${2:\$where}, ${3:\$order}, ${4:\$limit}, ${5:\$option}, ${5:\$readtags});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetArticleList</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description></description>
+</snippet>

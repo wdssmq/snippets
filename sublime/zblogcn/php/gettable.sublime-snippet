@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetTable();]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-gt</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>获取数据表</description>
+</snippet>

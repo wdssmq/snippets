@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->CheckMemberNameExist(${1:\$name});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-CheckMemberNameExist</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>检查指定名称的用户是否存在(不区分大小写)</description>
+</snippet>

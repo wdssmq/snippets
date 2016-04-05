@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->LoadInfoByAssoc(${1:\$array});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-LoadInfoByAssoc</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>根据数组从数据库内查找数据并返回</description>
+</snippet>

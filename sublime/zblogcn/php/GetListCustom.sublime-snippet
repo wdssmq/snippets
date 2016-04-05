@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetListCustom(${1:\$table}, ${2:\$datainfo}, ${3:\$sql});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetListCustom</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>查询指定数据结构的sql并返回Base对象列表</description>
+</snippet>

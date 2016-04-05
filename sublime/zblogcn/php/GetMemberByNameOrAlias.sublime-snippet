@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetMemberByNameOrAlias(${1:\$name});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetMemberByNameOrAlias</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>通过获取用户名或别名实例(不区分大小写)</description>
+</snippet>

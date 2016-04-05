@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetTagByAliasOrName(${1:\$name});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetTagByAliasOrName</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>通过tag名获取tag实例</description>
+</snippet>

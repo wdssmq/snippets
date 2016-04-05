@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetModuleByFileName(${1:\$fn});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetModuleByFileName</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>通过FileName获取模块实例</description>
+</snippet>

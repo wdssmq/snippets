@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->LoadInfoByField(${1:\$field}, ${2:\$field_value});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-LoadInfoByField</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>根据特定的字段和值搜索数据</description>
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->LoadInfoByArray(${1:\$array});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-LoadInfoByArray</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>从数组中加载数据</description>
+</snippet>

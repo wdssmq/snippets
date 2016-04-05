@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetPostByArray(${1:\$array});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetPostByArray</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>通过ID数组获取文章实例</description>
+</snippet>

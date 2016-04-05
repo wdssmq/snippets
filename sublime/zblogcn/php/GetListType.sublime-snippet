@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetListType(${1:\$type}, ${2:\$sql});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetListType</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>根据获取base结构数据</description>
+</snippet>

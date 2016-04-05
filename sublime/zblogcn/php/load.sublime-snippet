@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->Load();]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-load</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>载入ZBP</description>
+</snippet>

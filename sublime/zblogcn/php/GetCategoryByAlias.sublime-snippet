@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetCategoryByAlias(${1:\$name});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetCategoryByAlias</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>通过分类别名获取分类实例</description>
+</snippet>

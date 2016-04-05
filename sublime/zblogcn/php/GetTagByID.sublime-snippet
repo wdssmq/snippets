@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[\$zbp->GetTagByID(${1:\$id});]]></content>
+    <!-- Optional: Tab trigger to activate the snippet -->
+    <tabTrigger>zbp-GetTagByID</tabTrigger>
+    <!-- Optional: Scope the tab trigger will be active in -->
+    <scope>source.php</scope>
+    <!-- Optional: Description to show in the menu -->
+    <description>通过ID获取tag实例</description>
+</snippet>
