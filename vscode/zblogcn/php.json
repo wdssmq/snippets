@@ -1,0 +1,242 @@
+{
+  "zbp-CheckMemberByNameOrAliasExist": {
+    "prefix": "zbp-CheckMemberByNameOrAliasExist",
+    "body": "$zbp->CheckMemberByNameOrAliasExist(${1:$name});",
+    "description": "检查指定名称或别名的用户是否存在(不区分大小写)",
+    "scope": "source.php"
+  },
+  "zbp-CheckMemberNameExist": {
+    "prefix": "zbp-CheckMemberNameExist",
+    "body": "$zbp->CheckMemberNameExist(${1:$name});",
+    "description": "检查指定名称的用户是否存在(不区分大小写)",
+    "scope": "source.php"
+  },
+  "zbp-GetArticleList": {
+    "prefix": "zbp-GetArticleList",
+    "body": "$zbp->GetArticleList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option}, ${5:$readtags});",
+    "description": "",
+    "scope": "source.php"
+  },
+  "zbp-GetCategoryByAlias": {
+    "prefix": "zbp-GetCategoryByAlias",
+    "body": "$zbp->GetCategoryByAlias(${1:$name});",
+    "description": "通过分类别名获取分类实例",
+    "scope": "source.php"
+  },
+  "zbp-GetCategoryByAliasOrName": {
+    "prefix": "zbp-GetCategoryByAliasOrName",
+    "body": "$zbp->GetCategoryByAliasOrName(${1:$name});",
+    "description": "通过分类别名获取分类实例(旧版本使用)",
+    "scope": "source.php"
+  },
+  "zbp-GetCategoryByID": {
+    "prefix": "zbp-GetCategoryByID",
+    "body": "$zbp->GetCategoryByID(${1:$id});",
+    "description": "通过ID获取分类实例",
+    "scope": "source.php"
+  },
+  "zbp-GetCategoryByName": {
+    "prefix": "zbp-GetCategoryByName",
+    "body": "$zbp->GetCategoryByName(${1:$name});",
+    "description": "通过分类名获取分类实例",
+    "scope": "source.php"
+  },
+  "zbp-GetCategoryList": {
+    "prefix": "zbp-GetCategoryList",
+    "body": "$zbp->GetCategoryList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option});",
+    "description": "",
+    "scope": "source.php"
+  },
+  "zbp-GetCommentByID": {
+    "prefix": "zbp-GetCommentByID",
+    "body": "$zbp->GetCommentByID(${1:$id});",
+    "description": "通过ID获取评论实例",
+    "scope": "source.php"
+  },
+  "zbp-GetCommentList": {
+    "prefix": "zbp-GetCommentList",
+    "body": "$zbp->GetCommentList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option});",
+    "description": "",
+    "scope": "source.php"
+  },
+  "zbp-GetCounterByID": {
+    "prefix": "zbp-GetCounterByID",
+    "body": "$zbp->GetCounterByID(${1:$id});",
+    "description": "通过ID获取审计类实例",
+    "scope": "source.php"
+  },
+  "zbp-GetCounterList": {
+    "prefix": "zbp-GetCounterList",
+    "body": "$zbp->GetCounterList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option});",
+    "description": "",
+    "scope": "source.php"
+  },
+  "zbp-gd": {
+    "prefix": "zbp-gd",
+    "body": " $zbp->GetData(); ",
+    "description": "获取数据库数据",
+    "scope": "source.php"
+  },
+  "zbp-GetListCustom": {
+    "prefix": "zbp-GetListCustom",
+    "body": "$zbp->GetListCustom(${1:$table}, ${2:$datainfo}, ${3:$sql});",
+    "description": "查询指定数据结构的sql并返回Base对象列表",
+    "scope": "source.php"
+  },
+  "zbp-GetListCustomByArray": {
+    "prefix": "zbp-GetListCustomByArray",
+    "body": "$zbp->GetListCustomByArray(${1:$table}, ${2:$datainfo}, ${3:$sql});",
+    "description": "查询ID数据的指定数据结构的sql并返回Base对象列表",
+    "scope": "source.php"
+  },
+  "zbp-GetListType": {
+    "prefix": "zbp-GetListType",
+    "body": "$zbp->GetListType(${1:$type}, ${2:$sql});",
+    "description": "根据获取base结构数据",
+    "scope": "source.php"
+  },
+  "zbp-GetListTypeByArray": {
+    "prefix": "zbp-GetListTypeByArray",
+    "body": "$zbp->GetListTypeByArray(${1:$type}, ${2:$array});",
+    "description": "查询ID数据的指定类型的sql并返回指定类型对象列表",
+    "scope": "source.php"
+  },
+  "zbp-GetMemberByID": {
+    "prefix": "zbp-GetMemberByID",
+    "body": "$zbp->GetMemberByID(${1:$id});",
+    "description": "通过ID获取用户实例",
+    "scope": "source.php"
+  },
+  "zbp-GetMemberByName": {
+    "prefix": "zbp-GetMemberByName",
+    "body": "$zbp->GetMemberByName(${1:$name});",
+    "description": "通过用户名获取用户实例(不区分大小写)",
+    "scope": "source.php"
+  },
+  "zbp-GetMemberByNameOrAlias": {
+    "prefix": "zbp-GetMemberByNameOrAlias",
+    "body": "$zbp->GetMemberByNameOrAlias(${1:$name});",
+    "description": "通过获取用户名或别名实例(不区分大小写)",
+    "scope": "source.php"
+  },
+  "zbp-GetMemberList": {
+    "prefix": "zbp-GetMemberList",
+    "body": "$zbp->GetMemberList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option});",
+    "description": "",
+    "scope": "source.php"
+  },
+  "zbp-GetModuleByFileName": {
+    "prefix": "zbp-GetModuleByFileName",
+    "body": "$zbp->GetModuleByFileName(${1:$fn});",
+    "description": "通过FileName获取模块实例",
+    "scope": "source.php"
+  },
+  "zbp-GetModuleByID": {
+    "prefix": "zbp-GetModuleByID",
+    "body": "$zbp->GetModuleByID(${1:$id});",
+    "description": "通过ID获取模块实例",
+    "scope": "source.php"
+  },
+  "zbp-GetModuleList": {
+    "prefix": "zbp-GetModuleList",
+    "body": "$zbp->GetModuleList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option});",
+    "description": "",
+    "scope": "source.php"
+  },
+  "zbp-GetPageList": {
+    "prefix": "zbp-GetPageList",
+    "body": "$zbp->GetPageList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option});",
+    "description": "",
+    "scope": "source.php"
+  },
+  "zbp-GetPostByArray": {
+    "prefix": "zbp-GetPostByArray",
+    "body": "$zbp->GetPostByArray(${1:$array});",
+    "description": "通过ID数组获取文章实例",
+    "scope": "source.php"
+  },
+  "zbp-GetPostByID": {
+    "prefix": "zbp-GetPostByID",
+    "body": "$zbp->GetPostByID(${1:$id});",
+    "description": "通过ID获取文章实例",
+    "scope": "source.php"
+  },
+  "zbp-GetPostList": {
+    "prefix": "zbp-GetPostList",
+    "body": "$zbp->GetPostList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option});",
+    "description": "获取文章列表",
+    "scope": "source.php"
+  },
+  "zbp-gt": {
+    "prefix": "zbp-gt",
+    "body": "$zbp->GetTable();",
+    "description": "获取数据表",
+    "scope": "source.php"
+  },
+  "zbp-GetTagByAlias": {
+    "prefix": "zbp-GetTagByAlias",
+    "body": "$zbp->GetTagByAlias(${1:$name});",
+    "description": "通过tag名获取tag实例",
+    "scope": "source.php"
+  },
+  "zbp-GetTagByAliasOrName": {
+    "prefix": "zbp-GetTagByAliasOrName",
+    "body": "$zbp->GetTagByAliasOrName(${1:$name});",
+    "description": "通过tag名获取tag实例",
+    "scope": "source.php"
+  },
+  "zbp-GetTagByID": {
+    "prefix": "zbp-GetTagByID",
+    "body": "$zbp->GetTagByID(${1:$id});",
+    "description": "通过ID获取tag实例",
+    "scope": "source.php"
+  },
+  "zbp-GetTagList": {
+    "prefix": "zbp-GetTagList",
+    "body": "$zbp->GetTagList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option});",
+    "description": "",
+    "scope": "source.php"
+  },
+  "zbp-GetUploadByID": {
+    "prefix": "zbp-GetUploadByID",
+    "body": "$zbp->GetUploadByID(${1:$id});",
+    "description": "通过ID获取附件实例",
+    "scope": "source.php"
+  },
+  "zbp-GetUploadList": {
+    "prefix": "zbp-GetUploadList",
+    "body": "$zbp->GetUploadList(${1:$select}, ${2:$where}, ${3:$order}, ${4:$limit}, ${5:$option});",
+    "description": "",
+    "scope": "source.php"
+  },
+  "zbp-load": {
+    "prefix": "zbp-load",
+    "body": "$zbp->Load();",
+    "description": "载入ZBP",
+    "scope": "source.php"
+  },
+  "zbp-LoadInfoByArray": {
+    "prefix": "zbp-LoadInfoByArray",
+    "body": "$zbp->LoadInfoByArray(${1:$array});",
+    "description": "从数组中加载数据",
+    "scope": "source.php"
+  },
+  "zbp-LoadInfoByAssoc": {
+    "prefix": "zbp-LoadInfoByAssoc",
+    "body": "$zbp->LoadInfoByAssoc(${1:$array});",
+    "description": "根据数组从数据库内查找数据并返回",
+    "scope": "source.php"
+  },
+  "zbp-LoadInfoByField": {
+    "prefix": "zbp-LoadInfoByField",
+    "body": "$zbp->LoadInfoByField(${1:$field}, ${2:$field_value});",
+    "description": "根据特定的字段和值搜索数据",
+    "scope": "source.php"
+  },
+  "zbp-loadinfobyid": {
+    "prefix": "zbp-loadinfobyid",
+    "body": "$zbp->LoadInfoByID(${1:$id});",
+    "description": "获取数据库内指定ID的数据",
+    "scope": "source.php"
+  }
+}
