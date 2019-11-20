@@ -15,11 +15,24 @@
   "var_dump": {
     "prefix": "log",
     "body": [
+      "// debug",
+      "// ob_clean();",
       "echo __LINE__ . \":<br>\\n\";",
       "var_dump($1);",
       "echo \"<br><br>\\n\\n\";",
-      "${2://die();}"
+      "${2:// die();}",
+      "// debug"
     ],
+    "description": ""
+  },
+  "file_put_contents": {
+    "prefix": "fput",
+    "body": ["file_put_contents(${1:\\$file},${2:\\$str});"],
+    "description": ""
+  },
+  "file_get_contents": {
+    "prefix": "fget",
+    "body": ["file_get_contents(${1:\\$file})${2:;}"],
     "description": ""
   },
   "savcfg": {
@@ -101,6 +114,55 @@
       "      return \\$result . \\$file;",
       "  }",
       "}"
+    ],
+    "description": ""
+  },
+  "Add_Filter_Plugin": {
+    "prefix": "Add_Filter_Plugin",
+    "body": "Add_Filter_Plugin('$1','$2')",
+    "description": ""
+  },
+  "Filter_Plugin_ViewList_Template": {
+    "prefix": "Filter_Plugin_ViewList_Template",
+    "body": "Filter_Plugin_ViewList_Template",
+    "description": ""
+  },
+  "Filter_Plugin_ViewPost_Template": {
+    "prefix": "Filter_Plugin_ViewPost_Template",
+    "body": "Filter_Plugin_ViewPost_Template",
+    "description": ""
+  },
+  "article": {
+    "prefix": "article",
+    "body": [
+      "\\$article = \\$template->GetTags('article');",
+      "\\$article->Content = $1"
+    ],
+    "description": ""
+  },
+  "article-Content": {
+    "prefix": "article-Content",
+    "body": "\\$article->Content",
+    "description": "文章正文"
+  },
+  "zbp": {
+    "prefix": "zbp",
+    "body": "global \\$zbp;",
+    "description": ""
+  },
+  "zbp-header": {
+    "prefix": "zbp-header",
+    "body": [
+      "\\$style = $1;",
+      "\\$zbp->header .= \"<link rel=\\\"stylesheet\\\" href=\\\"{\\$style }\\\">\";"
+    ],
+    "description": ""
+  },
+  "zbp-footer": {
+    "prefix": "zbp-footer",
+    "body": [
+      "\\$script= $1;",
+      "\\$zbp->footer .= \"<script src=\\\"{\\$script}\\\"></script>\";"
     ],
     "description": ""
   },

@@ -17,6 +17,16 @@
     "body": ["<?php $1;?>"],
     "description": ""
   },
+  "h1-6": {
+    "prefix": "h1-6",
+    "body": ["<h$1>$2</h$1>"],
+    "description": ""
+  },
+  "p": {
+    "prefix": "p",
+    "body": ["<p>$1</p>"],
+    "description": ""
+  },
   "small": {
     "prefix": "small",
     "body": [
@@ -27,24 +37,24 @@
   "cfgform": {
     "prefix": "cfgform",
     "body": [
-      "    <form action=\"<?php echo BuildSafeURL(\"main.php?act=save\");?>\" method=\"post\">",
-      "      <table width=\"100%\" class=\"tableBorder\">",
-      "      <tr>",
-      "        <th width=\"10%\">项目</th>",
-      "        <th>内容</th>",
-      "        <th width=\"45%\">说明</th>",
-      "      </tr>",
-      "      <tr>",
-      "        <td>$1</td>",
-      "        <td><?php echo zbpform::text(\"$1\", \\$zbp->Config(\"$2\")->$1, \"90%\"); ?></td>",
-      "        <td></td>",
-      "      </tr>",
-      "      <tr>",
-      "      <td><input type=\"submit\" value=\"提交\" /></td>",
-      "      <td colspan=\"2\"></td>",
-      "      </tr>",
-      "      </table>",
-      "    </form>"
+      " <form action=\"<?php echo BuildSafeURL(\"main.php?act=save\");?>\" method=\"post\">",
+      "   <table width=\"100%\" class=\"tableBorder\">",
+      "   <tr>",
+      "     <th width=\"10%\">项目</th>",
+      "     <th>内容</th>",
+      "     <th width=\"45%\">说明</th>",
+      "   </tr>",
+      "   <tr>",
+      "     <td>$1</td>",
+      "     <td><?php echo zbpform::text(\"$2\", \\$zbp->Config(\"$3\")->$2, \"90%\"); ?></td>",
+      "     <td></td>",
+      "   </tr>",
+      "   <tr>",
+      "   <td><input type=\"submit\" value=\"提交\" /></td>",
+      "   <td colspan=\"2\"></td>",
+      "   </tr>",
+      "   </table>",
+      " </form>"
     ],
     "description": ""
   }
