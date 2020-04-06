@@ -17,16 +17,6 @@
     "body": ["<?php $1;?>"],
     "description": ""
   },
-  "h1-6": {
-    "prefix": "h1-6",
-    "body": ["<h$1>$2</h$1>"],
-    "description": ""
-  },
-  "p": {
-    "prefix": "p",
-    "body": ["<p>$1</p>"],
-    "description": ""
-  },
   "small": {
     "prefix": "small",
     "body": [
@@ -50,8 +40,8 @@
       "     <td></td>",
       "   </tr>",
       "   <tr>",
-      "   <td><input type=\"submit\" value=\"提交\" /></td>",
-      "   <td colspan=\"2\"></td>",
+      "   <td></td>",
+      "   <td colspan=\"2\"><input type=\"submit\" value=\"提交\" /></td>",
       "   </tr>",
       "   </table>",
       " </form>"

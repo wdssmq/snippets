@@ -119,7 +119,7 @@
   },
   "Add_Filter_Plugin": {
     "prefix": "Add_Filter_Plugin",
-    "body": "Add_Filter_Plugin('$1','$2')",
+    "body": "Add_Filter_Plugin('$1','$2');",
     "description": ""
   },
   "Filter_Plugin_ViewList_Template": {
