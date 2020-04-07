@@ -12,12 +12,21 @@
   // 	],
   // 	"description": "Log output to console"
   // }
+  // "test": {
+  //   "prefix": "test",
+  //   "body": [
+  //     "${TM_FILENAME/(.*)\\..+$/$1/}",
+  //     "${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}",
+  //     "$TM_FILENAME",
+  //   ],
+  //   "description": ""
+  // },
   "var_dump": {
     "prefix": "log",
     "body": [
       "// debug",
       "// ob_clean();",
-      "echo __LINE__ . \":<br>\\n\";",
+      "echo __FILE__ . \"丨\" . __LINE__ . \":<br>\\n\";",
       "var_dump($1);",
       "echo \"<br><br>\\n\\n\";",
       "${2:// die();}",
@@ -82,13 +91,14 @@
   "init_cfg": {
     "prefix": "init_cfg",
     "body": [
-      "if (!\\$zbp->HasConfig('$1')) {",
-      "  \\$zbp->Config('$1')->${2:version} = 1;",
-      "  \\$zbp->Config('$1')->${3:value}= \"$4\";",
-      "  \\$zbp->SaveConfig('$1');",
-      "}"
+      "${1:global \\$zbp;}",
+      "if (!\\$zbp->HasConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')) {",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = 1;",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${2:value}= \"$3\";",
+      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "}",
     ],
-    "description": ""
+    "description": "初始化config"
   },
   "fnpath": {
     "prefix": "fnpath",
@@ -120,7 +130,7 @@
   "Add_Filter_Plugin": {
     "prefix": "Add_Filter_Plugin",
     "body": "Add_Filter_Plugin('$1','$2');",
-    "description": ""
+    "description": "添加插件接口"
   },
   "Filter_Plugin_ViewList_Template": {
     "prefix": "Filter_Plugin_ViewList_Template",
