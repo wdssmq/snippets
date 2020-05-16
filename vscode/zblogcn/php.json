@@ -24,14 +24,21 @@
   "var_dump": {
     "prefix": "log",
     "body": [
+      "",
       "// debug",
       "// ob_clean();",
       "echo __FILE__ . \"丨\" . __LINE__ . \":<br>\\n\";",
       "var_dump($1);",
       "echo \"<br><br>\\n\\n\";",
       "${2:// die();}",
-      "// debug"
+      "// debug",
+      ""
     ],
+    "description": ""
+  },
+  "echo_js": {
+    "prefix": "ejs",
+    "body": ["echo '<script src=\"${1:'. .'}\"></script>';"],
     "description": ""
   },
   "file_put_contents": {
@@ -100,13 +107,26 @@
     ],
     "description": "初始化config"
   },
+  "fnA": {
+    "prefix": "fna",
+    "body": [
+      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_a(\\$href, \\$title, \\$text = \"\")",
+      "{",
+      "  if (empty(\\$text)) {",
+      "    \\$text = \\$href;",
+      "  }",
+      "  return \"<a href=\\\"{\\$href}\\\" title=\\\"{\\$title}\\\">\\$text</a>\";",
+      "}",
+    ],
+    "description": "初始化config"
+  },
   "fnpath": {
     "prefix": "fnpath",
     "body": [
-      "function $1_Path(\\$file, \\$t = 'path')",
+      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\\$file, \\$t = 'path')",
       "{",
       "  global \\$zbp;",
-      "  \\$result = \\$zbp->\\$t . 'zb_users/plugin/$1/';",
+      "  \\$result = \\$zbp->\\$t . 'zb_users/plugin/${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}/';",
       "  switch (\\$file) {",
       "    case '${2:file}':",
       "      return \\$result . '${3:file}';",
