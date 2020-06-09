@@ -37,8 +37,16 @@
     "description": ""
   },
   "echo_js": {
-    "prefix": "ejs",
-    "body": ["echo '<script src=\"${1:'. .'}\"></script>';"],
+    "prefix": "echo_js",
+    "body": ["${3:echo }'<script src=\"${2:'. ${1} .'}\"></script>'${4:;}"],
+    "description": "建议使用zbp-footer"
+  },
+  "echo_json": {
+    "prefix": "echo_json",
+    "body": [
+      "header('Content-Type:application/json; charset=utf-8');",
+      "echo json_encode($1);"
+    ],
     "description": ""
   },
   "file_put_contents": {
@@ -56,7 +64,7 @@
     "body": [
       "\\$act = GetVars('act', 'GET');",
       "\\$suc = GetVars('suc', 'GET');",
-      "if (GetVars('act', 'GET') == 'save') {",
+      "if (\\$act == 'save') {",
       "  CheckIsRefererValid();",
       "  foreach (\\$_POST as \\$key => \\$val) {",
       "    \\$zbp->Config('${1:Name}')->\\$key = trim(\\$val);",
