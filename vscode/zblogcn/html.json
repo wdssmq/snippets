@@ -36,7 +36,7 @@
       "   </tr>",
       "   <tr>",
       "     <td>$1</td>",
-      "     <td><?php echo zbpform::text(\"$2\", \\$zbp->Config(\"$3\")->$2, \"90%\"); ?></td>",
+      "     <td><?php echo zbpform::text(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2, \"90%\"); ?></td>",
       "     <td></td>",
       "   </tr>",
       "   <tr>",

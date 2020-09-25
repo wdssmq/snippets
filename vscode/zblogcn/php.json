@@ -59,17 +59,17 @@
     "body": ["file_get_contents(${1:\\$file})${2:;}"],
     "description": ""
   },
-  "savcfg": {
-    "prefix": "savcfg",
+  "save_cfg": {
+    "prefix": ["save_cfg", "cfg_save"],
     "body": [
       "\\$act = GetVars('act', 'GET');",
       "\\$suc = GetVars('suc', 'GET');",
       "if (\\$act == 'save') {",
       "  CheckIsRefererValid();",
       "  foreach (\\$_POST as \\$key => \\$val) {",
-      "    \\$zbp->Config('${1:Name}')->\\$key = trim(\\$val);",
+      "    \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->\\$key = trim(\\$val);",
       "  }",
-      "  \\$zbp->SaveConfig('${1:Name}');",
+      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
       "  \\$zbp->BuildTemplate();",
       "  \\$zbp->SetHint('good');",
       "  Redirect('./main.php' . (\\$suc == null ? '' : '?act=\\$suc'));",
@@ -93,8 +93,8 @@
     "body": [
       "\\$filesList = array(\"$1\");",
       "foreach (\\$filesList as \\$key => \\$value) {",
-      "  \\$uFile = $2_Path(\"u-{\\$value}\");",
-      "  \\$vFile = $2_Path(\"v-{\\$value}\");",
+      "  \\$uFile = ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\"u-{\\$value}\");",
+      "  \\$vFile = ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\"v-{\\$value}\");",
       "  if (!is_file(\\$uFile)) {",
       "    @mkdir(dirname(\\$uFile));",
       "    copy(\\$vFile, \\$uFile);",
