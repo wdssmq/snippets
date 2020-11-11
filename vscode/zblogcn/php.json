@@ -38,8 +38,15 @@
   },
   "echo_js": {
     "prefix": "echo_js",
-    "body": ["${3:echo }'<script src=\"${2:'. ${1} .'}\"></script>'${4:;}"],
+    "body": ["${1:echo }'<script src=\"${3:'. ${2} .'}\"></script>'${4:;}"],
     "description": "建议使用zbp-footer"
+  },
+  "echo_css": {
+    "prefix": "echo_css",
+    "body": [
+      "${1:echo }'<link rel=\"stylesheet\" href=\"${3:'. ${2} .'}\">'${4:;}"
+    ],
+    "description": "建议使用zbp-header"
   },
   "echo_json": {
     "prefix": "echo_json",
@@ -111,7 +118,7 @@
       "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = 1;",
       "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${2:value}= \"$3\";",
       "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
-      "}",
+      "}"
     ],
     "description": "初始化config"
   },
@@ -123,8 +130,8 @@
       "  if (empty(\\$text)) {",
       "    \\$text = \\$href;",
       "  }",
-      "  return \"<a href=\\\"{\\$href}\\\" title=\\\"{\\$title}\\\">\\$text</a>\";",
-      "}",
+      "  return \"<a target=\\\"_blank\\\" href=\\\"{\\$href}\\\" title=\\\"{\\$title}\\\">\\$text</a>\";",
+      "}"
     ],
     "description": "初始化config"
   },
@@ -203,6 +210,11 @@
       "\\$zbp->footer .= \"<script src=\\\"{\\$script}\\\"></script>\";"
     ],
     "description": ""
+  },
+  "zbp-sethint": {
+    "prefix": ["zbp-sethint", "sethint"],
+    "body": ["\\$zbp->SetHint(\"tips${1: hint_always}\", \"$2\");"],
+    "description": "设置提示语"
   },
   // https://github.com/zblogcn/snippets
   "zbp-GetCSRFToken": {

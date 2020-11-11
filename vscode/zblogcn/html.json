@@ -24,6 +24,14 @@
     ],
     "description": "刷新按钮"
   },
+  "textarea": {
+    "prefix": ["form_textarea", "textarea_form"],
+    "body": "<?php zbpform::textarea(\"$2\", htmlspecialchars(\\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2), \"90%\"); ?>"
+  },
+  "zbradio": {
+    "prefix": ["form_zbradio", "zbradio_form"],
+    "body": "<?php zbpform::zbradio(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2); ?>"
+  },
   "cfgform": {
     "prefix": "cfgform",
     "body": [
@@ -36,7 +44,7 @@
       "   </tr>",
       "   <tr>",
       "     <td>$1</td>",
-      "     <td><?php echo zbpform::text(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2, \"90%\"); ?></td>",
+      "     <td><?php zbpform::text(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2, \"90%\"); ?></td>",
       "     <td></td>",
       "   </tr>",
       "   <tr>",
