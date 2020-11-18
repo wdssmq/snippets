@@ -195,6 +195,16 @@
     "body": "global \\$zbp;",
     "description": ""
   },
+  "zbp-host": {
+    "prefix": "zbp_host",
+    "body": "\\$zbp->host",
+    "description": ""
+  },
+  "zbp-path": {
+    "prefix": "zbp_path",
+    "body": "\\$zbp->path",
+    "description": ""
+  },
   "zbp-header": {
     "prefix": "zbp-header",
     "body": [
