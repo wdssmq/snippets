@@ -17,6 +17,80 @@
     "body": ["<?php $1;?>"],
     "description": ""
   },
+  // 模板标签
+  "{$language}": {
+    "prefix": "zbp_lang",
+    "body": ["{\\$language}"],
+    "description": ""
+  },
+  "{$host}": {
+    "prefix": "zbp_host",
+    "body": ["{\\$host}"],
+    "description": ""
+  },
+  "{$name}": {
+    "prefix": "zbp_name",
+    "body": ["{\\$name}"],
+    "description": ""
+  },
+  "{$subname}": {
+    "prefix": "zbp_subname",
+    "body": ["{\\$subname}"],
+    "description": ""
+  },
+  "{$type}": {
+    "prefix": "zbp_type",
+    "body": ["{\\$type}"],
+    "description": ""
+  },
+  "class_{$type}": {
+    "prefix": "zbp_class_type",
+    "body": ["class=\"{\\$type}\""],
+    "description": ""
+  },
+  "{$zblogphp}": {
+    "prefix": "zbp_zblogphp",
+    "body": ["{\\$zblogphp}"],
+    "description": ""
+  },
+  "meta_{$zblogphp}": {
+    "prefix": "zbp_meta_generator",
+    "body": ["<meta name=\"generator\" content=\"{\\$zblogphp}\">"],
+    "description": ""
+  },
+  "{$footer}": {
+    "prefix": "zbp_footer",
+    "body": ["{\\$footer}"],
+    "description": ""
+  },
+  "{$header}": {
+    "prefix": "zbp_header",
+    "body": ["{\\$header}"],
+    "description": ""
+  },
+  // 引用其他模板
+  "{template:header}": {
+    "prefix": "tpl_header",
+    "body": ["{template:header}"],
+    "description": ""
+  },
+  "{template:hero}": {
+    "prefix": "tpl_hero",
+    "body": ["{template:hero}"],
+    "description": ""
+  },
+  "{template:footer}": {
+    "prefix": "tpl_footer",
+    "body": ["{template:footer}"],
+    "description": ""
+  },
+  // 模块调用
+  "{module:navbar}": {
+    "prefix": "mod_navbar",
+    "body": ["{module:navbar}"],
+    "description": ""
+  },
+  // 用于main.php
   "small": {
     "prefix": "small",
     "body": [
@@ -32,8 +106,8 @@
     "prefix": ["form_zbradio", "zbradio_form"],
     "body": "<?php zbpform::zbradio(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2); ?>"
   },
-  "cfgform": {
-    "prefix": "cfgform",
+  "cfg_form": {
+    "prefix": ["cfg_form", "form_cfg"],
     "body": [
       " <form action=\"<?php echo BuildSafeURL(\"main.php?act=save\");?>\" method=\"post\">",
       "   <table width=\"100%\" class=\"tableBorder\">",

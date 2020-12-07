@@ -46,7 +46,7 @@
     "body": [
       "${1:echo }'<link rel=\"stylesheet\" href=\"${3:'. ${2} .'}\">'${4:;}"
     ],
-    "description": "建议使用zbp-header"
+    "description": "建议使用zbp-footer"
   },
   "echo_json": {
     "prefix": "echo_json",
@@ -66,6 +66,18 @@
     "body": ["file_get_contents(${1:\\$file})${2:;}"],
     "description": ""
   },
+  "init_cfg": {
+    "prefix": ["init_cfg", "cfg_init"],
+    "body": [
+      "${1:global \\$zbp;}",
+      "if (!\\$zbp->HasConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')) {",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = 1;",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${2:value}= \"$3\";",
+      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "}"
+    ],
+    "description": "初始化config"
+  },
   "save_cfg": {
     "prefix": ["save_cfg", "cfg_save"],
     "body": [
@@ -79,7 +91,7 @@
       "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
       "  \\$zbp->BuildTemplate();",
       "  \\$zbp->SetHint('good');",
-      "  Redirect('./main.php' . (\\$suc == null ? '' : '?act=\\$suc'));",
+      "  Redirect('./main.php' . (\\$suc == null ? '' : \"?act={\\$suc}\"));",
       "}"
     ],
     "description": ""
@@ -109,18 +121,6 @@
       "}"
     ],
     "description": ""
-  },
-  "init_cfg": {
-    "prefix": "init_cfg",
-    "body": [
-      "${1:global \\$zbp;}",
-      "if (!\\$zbp->HasConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')) {",
-      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = 1;",
-      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${2:value}= \"$3\";",
-      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
-      "}"
-    ],
-    "description": "初始化config"
   },
   "fnA": {
     "prefix": "fna",
@@ -175,6 +175,11 @@
   "Filter_Plugin_ViewPost_Template": {
     "prefix": "Filter_Plugin_ViewPost_Template",
     "body": "Filter_Plugin_ViewPost_Template",
+    "description": ""
+  },
+  "Filter_Plugin_Zbp_Load": {
+    "prefix": "Filter_Plugin_Zbp_Load",
+    "body": "Filter_Plugin_Zbp_Load",
     "description": ""
   },
   "article": {
