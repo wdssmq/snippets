@@ -22,13 +22,13 @@
   //   "description": ""
   // },
   "var_dump": {
-    "prefix": "log",
+    "prefix": ["log", "v_log", "var_dump", "print"],
     "body": [
       "",
       "// debug",
       "// ob_clean();",
       "echo __FILE__ . \"丨\" . __LINE__ . \":<br>\\n\";",
-      "var_dump($1);",
+      "var_dump(${1:''});",
       "echo \"<br><br>\\n\\n\";",
       "${2:// die();}",
       "// debug",

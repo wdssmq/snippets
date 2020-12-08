@@ -1,2 +1,4 @@
 *.lnk
 *.code-workspace
+/vscode/zblogcn/html - 符号连接.json
+/vscode/zblogcn/php - 符号连接.json
