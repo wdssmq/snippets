@@ -46,7 +46,7 @@
     "body": [
       "${1:echo }'<link rel=\"stylesheet\" href=\"${3:'. ${2} .'}\">'${4:;}"
     ],
-    "description": "建议使用zbp-footer"
+    "description": "建议使用zbp-header"
   },
   "echo_json": {
     "prefix": "echo_json",
@@ -66,20 +66,31 @@
     "body": ["file_get_contents(${1:\\$file})${2:;}"],
     "description": ""
   },
-  "init_cfg": {
-    "prefix": ["init_cfg", "cfg_init"],
+  "cfg_init": {
+    "prefix": ["cfg_init", "init_cfg"],
     "body": [
       "${1:global \\$zbp;}",
       "if (!\\$zbp->HasConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')) {",
       "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = 1;",
-      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${2:value}= \"$3\";",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${2:key}= \"$3\";",
       "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
       "}"
     ],
     "description": "初始化config"
   },
-  "save_cfg": {
-    "prefix": ["save_cfg", "cfg_save"],
+  "cfg_read": {
+    "prefix": ["cfg_read", "read_cfg"],
+    "body": "\\$${1:key} = \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:key};"
+  },
+  "cfg_write": {
+    "prefix": ["cfg_write", "write_cfg"],
+    "body": [
+      "\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:key} = ${2:'value'};",
+      "\\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');"
+    ]
+  },
+  "cfg_save": {
+    "prefix": ["cfg_save", "save_cfg"],
     "body": [
       "\\$act = GetVars('act', 'GET');",
       "\\$suc = GetVars('suc', 'GET');",
@@ -122,8 +133,30 @@
     ],
     "description": ""
   },
-  "fnA": {
-    "prefix": "fna",
+  "fn_zbp": {
+    "prefix": "fn_zbp",
+    "body": [
+      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_${2:FunctionName}(${3:\\$var = null})",
+      "{",
+      "  ${4:# code...}",
+      "}"
+    ],
+    "description": "带前缀的函数"
+  },
+  "fn_GenTpl": {
+    "prefix": "fn_GenTpl",
+    "body": [
+      "${1:Add_Filter_Plugin('Filter_Plugin_Zbp_BuildTemplate','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_GenTpl');}",
+      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_GenTpl(&\\$templates)",
+      "{",
+      "  \\$tplCont = ${2:file_get_contents(${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\"$3\"))};",
+      "  ${4:\\$templates[\"plugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_$3\"] = \\$tplCont;}",
+      "}"
+    ],
+    "description": "BuildTemplate接口函数"
+  },
+  "fn_a": {
+    "prefix": "fn_a",
     "body": [
       "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_a(\\$href, \\$title, \\$text = \"\")",
       "{",
@@ -133,10 +166,10 @@
       "  return \"<a target=\\\"_blank\\\" href=\\\"{\\$href}\\\" title=\\\"{\\$title}\\\">\\$text</a>\";",
       "}"
     ],
-    "description": "初始化config"
+    "description": "用于拼接点击链接"
   },
-  "fnpath": {
-    "prefix": "fnpath",
+  "fn_path": {
+    "prefix": "fn_path",
     "body": [
       "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\\$file, \\$t = 'path')",
       "{",
@@ -160,12 +193,17 @@
       "  }",
       "}"
     ],
-    "description": ""
+    "description": "获取插件内文件路径或url"
   },
   "Add_Filter_Plugin": {
     "prefix": "Add_Filter_Plugin",
     "body": "Add_Filter_Plugin('$1','$2');",
     "description": "添加插件接口"
+  },
+  "Filter_Plugin_Zbp_BuildTemplate": {
+    "prefix": "Filter_Plugin_Zbp_BuildTemplate",
+    "body": "Filter_Plugin_Zbp_BuildTemplate",
+    "description": "模板重建接口"
   },
   "Filter_Plugin_ViewList_Template": {
     "prefix": "Filter_Plugin_ViewList_Template",
@@ -186,7 +224,7 @@
     "prefix": "article",
     "body": [
       "\\$article = \\$template->GetTags('article');",
-      "\\$article->Content = $1"
+      "\\$article->Content = $1;"
     ],
     "description": ""
   },
@@ -194,6 +232,15 @@
     "prefix": "article-Content",
     "body": "\\$article->Content",
     "description": "文章正文"
+  },
+  "tpl-output": {
+    "prefix": "tpl-output",
+    "body": [
+      "\\$${2:item} = ${1:'content'};",
+      "\\$zbp->template->SetTags('${2:item}', \\$${2:item});",
+      "\\$rlt = \\$zbp->template->Output(\"plugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_$3\");"
+    ],
+    "description": "复用模板机制生成内容"
   },
   "zbp": {
     "prefix": "zbp",

@@ -28,6 +28,11 @@
     "body": ["{\\$host}"],
     "description": ""
   },
+  "{$tiitle}": {
+    "prefix": "zbp_title",
+    "body": ["{\\$tiitle}"],
+    "description": ""
+  },
   "{$name}": {
     "prefix": "zbp_name",
     "body": ["{\\$name}"],
@@ -68,6 +73,28 @@
     "body": ["{\\$header}"],
     "description": ""
   },
+  //
+  "html:zbp": {
+    "prefix": "html:zbp",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"{\\$language}\">",
+      "",
+      "<head>",
+      "  {template:header}",
+      "</head>",
+      "",
+      "<body class=\"{\\$type}\">",
+      "  {template:hero}",
+      "  ${1:<!-- YouCode -->}",
+      "  {template:footer}",
+      "</body>",
+      "",
+      "</html>",
+      ""
+    ],
+    "description": ""
+  },
   // 引用其他模板
   "{template:header}": {
     "prefix": "tpl_header",
@@ -94,9 +121,16 @@
   "small": {
     "prefix": "small",
     "body": [
-      "<small><a title=\"刷新\" href=\"main.php\" style=\"font-size: 16px;display: inline-block;margin-left: 5px;\">刷新</a></small>"
+      "<small><a title=\"刷新\" href=\"javascript:;\" onclick=\"location.reload();\" style=\"font-size: 16px;display: inline-block;margin-left: 5px;\">刷新</a></small>"
     ],
     "description": "刷新按钮"
+  },
+  "about.php": {
+    "prefix": "about",
+    "body": [
+      "<a href=\"main.php\" title=\"首页\"><span class=\"m-left m-now\">首页</span></a>",
+      "<?php require \"about.php\"; ?>"
+    ]
   },
   "textarea": {
     "prefix": ["form_textarea", "textarea_form"],
