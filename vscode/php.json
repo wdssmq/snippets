@@ -1,17 +1,4 @@
 {
-  // Place your snippets for php here. Each snippet is defined under a snippet name and has a prefix, body and
-  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
-  // same ids are connected.
-  // Example:
-  // "Print to console": {
-  // 	"prefix": "log",
-  // 	"body": [
-  // 		"console.log("$1");",
-  // 		"$2"
-  // 	],
-  // 	"description": "Log output to console"
-  // }
   // "test": {
   //   "prefix": "test",
   //   "body": [
@@ -85,8 +72,17 @@
   "cfg_write": {
     "prefix": ["cfg_write", "write_cfg"],
     "body": [
-      "\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:key} = ${2:'value'};",
+      "\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:key} = ${2:'${3:value}'};",
       "\\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');"
+    ]
+  },
+  "cfg_haskey": {
+    "prefix": ["cfg_haskey", "haskey_cfg"],
+    "body": [
+      "if (!\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->HasKey(\"${1:newKey}\")){",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:newKey} = ${2:'${3:value}'};",
+      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "}"
     ]
   },
   "cfg_save": {
@@ -143,6 +139,31 @@
     ],
     "description": "带前缀的函数"
   },
+  "fn_update": {
+    "prefix": ["fn_update", "cfg_update"],
+    "body": [
+      "// 插件升级时执行",
+      "function UpdatePlugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}()",
+      "{",
+      "  global \\$zbp;",
+      "  //\\$version = \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version;",
+      "  //if (\\$version !== 1.1) {",
+      "  //  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = 1.1;",
+      "  //  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "  //}",
+      "  // cfg_haskey ← 单独使用",
+      "  if (!\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->HasKey(\"${1:newKey}\")){",
+      "    \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:newKey} = ${2:'${3:value}'};",
+      "    \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "  }",
+      "}",
+      "// 旧版兼容",
+      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Updated()",
+      "{",
+      "  UpdatePlugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}();",
+      "}"
+    ]
+  },
   "fn_GenTpl": {
     "prefix": "fn_GenTpl",
     "body": [
@@ -154,6 +175,35 @@
       "}"
     ],
     "description": "BuildTemplate接口函数"
+  },
+  "fn_ViewPost": {
+    "prefix": "fn_ViewPost",
+    "body": [
+      "${1:Add_Filter_Plugin('Filter_Plugin_ViewPost_Template','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_ViewPost');}",
+      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_ViewPost(&\\$template)",
+      "{",
+      "  \\$article = \\$template->GetTags('article');",
+      "  ${3:\\$article->Content = $2;}",
+      "}"
+    ],
+    "description": "ViewPost接口函数"
+  },
+  "fn_Cmd_Ajax": {
+    "prefix": "fn_Cmd_Ajax",
+    "body": [
+      "${1:Add_Filter_Plugin('Filter_Plugin_Cmd_Ajax','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Ajax');}",
+      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Ajax(&\\$src)",
+      "{",
+      "  if (\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\" !== \\$src) {",
+      "    return;",
+      "  }",
+      "  \\$act = GetVars(\"act\", \"GET\");",
+      "  if (\\$act === \"$2\"){",
+      "    $3",
+      "  }",
+      "}"
+    ],
+    "description": "Cmd_Ajax接口函数"
   },
   "fn_a": {
     "prefix": "fn_a",
