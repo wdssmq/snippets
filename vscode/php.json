@@ -9,7 +9,12 @@
   //   "description": ""
   // },
   "var_dump": {
-    "prefix": ["log", "v_log", "var_dump", "print"],
+    "prefix": [
+      "log",
+      "v_log",
+      "var_dump",
+      "print"
+    ],
     "body": [
       "",
       "// debug",
@@ -23,9 +28,26 @@
     ],
     "description": ""
   },
+  // 常用 html
+  "p": {
+    "prefix": "p",
+    "body": "<p>$1</p>"
+  },
+  "str_replace": {
+    "prefix": [
+      "str_replace",
+      "replace",
+      "strreplace"
+    ],
+    "body": [
+      "\\$${1:str} = str_replace(\"$2\",\"$3\",\\$${1:str});"
+    ]
+  },
   "echo_js": {
     "prefix": "echo_js",
-    "body": ["${1:echo }'<script src=\"${3:'. ${2} .'}\"></script>'${4:;}"],
+    "body": [
+      "${1:echo }'<script src=\"${3:'. ${2} .'}\"></script>'${4:;}"
+    ],
     "description": "建议使用zbp-footer"
   },
   "echo_css": {
@@ -45,16 +67,23 @@
   },
   "file_put_contents": {
     "prefix": "fput",
-    "body": ["file_put_contents(${1:\\$file},${2:\\$str});"],
+    "body": [
+      "file_put_contents(${1:\\$file},${2:\\$str});"
+    ],
     "description": ""
   },
   "file_get_contents": {
     "prefix": "fget",
-    "body": ["file_get_contents(${1:\\$file})${2:;}"],
+    "body": [
+      "file_get_contents(${1:\\$file})${2:;}"
+    ],
     "description": ""
   },
   "cfg_init": {
-    "prefix": ["cfg_init", "init_cfg"],
+    "prefix": [
+      "cfg_init",
+      "init_cfg"
+    ],
     "body": [
       "${1:global \\$zbp;}",
       "if (!\\$zbp->HasConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')) {",
@@ -66,18 +95,27 @@
     "description": "初始化config"
   },
   "cfg_read": {
-    "prefix": ["cfg_read", "read_cfg"],
+    "prefix": [
+      "cfg_read",
+      "read_cfg"
+    ],
     "body": "\\$${1:key} = \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:key};"
   },
   "cfg_write": {
-    "prefix": ["cfg_write", "write_cfg"],
+    "prefix": [
+      "cfg_write",
+      "write_cfg"
+    ],
     "body": [
       "\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:key} = ${2:'${3:value}'};",
       "\\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');"
     ]
   },
   "cfg_haskey": {
-    "prefix": ["cfg_haskey", "haskey_cfg"],
+    "prefix": [
+      "cfg_haskey",
+      "haskey_cfg"
+    ],
     "body": [
       "if (!\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->HasKey(\"${1:newKey}\")){",
       "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:newKey} = ${2:'${3:value}'};",
@@ -85,14 +123,32 @@
       "}"
     ]
   },
+  "cfg_delkey": {
+    "prefix": [
+      "cfg_delkey",
+      "delkey_cfg"
+    ],
+    "body": [
+      "if (\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->DelKey(\"${1:keyName}\")){",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:keyName};",
+      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "}"
+    ]
+  },
   "cfg_save": {
-    "prefix": ["cfg_save", "save_cfg"],
+    "prefix": [
+      "cfg_save",
+      "save_cfg"
+    ],
     "body": [
       "\\$act = GetVars('act', 'GET');",
       "\\$suc = GetVars('suc', 'GET');",
       "if (\\$act == 'save') {",
       "  CheckIsRefererValid();",
       "  foreach (\\$_POST as \\$key => \\$val) {",
+      "    if (substr(\\$key, 0, 5) == 'read_') {",
+      "      continue;",
+      "    }",
       "    \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->\\$key = trim(\\$val);",
       "  }",
       "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
@@ -140,7 +196,10 @@
     "description": "带前缀的函数"
   },
   "fn_update": {
-    "prefix": ["fn_update", "cfg_update"],
+    "prefix": [
+      "fn_update",
+      "cfg_update"
+    ],
     "body": [
       "// 插件升级时执行",
       "function UpdatePlugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}()",
@@ -152,7 +211,7 @@
       "  //  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
       "  //}",
       "  // cfg_haskey ← 单独使用",
-      "  if (!\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->HasKey(\"${1:newKey}\")){",
+      "  if (!\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->HasKey(\"${1:newKey}\")) {",
       "    \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:newKey} = ${2:'${3:value}'};",
       "    \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
       "  }",
@@ -170,7 +229,7 @@
       "${1:Add_Filter_Plugin('Filter_Plugin_Zbp_BuildTemplate','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_GenTpl');}",
       "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_GenTpl(&\\$templates)",
       "{",
-      "  \\$tplCont = ${2:file_get_contents(${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\"$3\"))};",
+      "  \\$tplCont = ${2:file_get_contents(${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\"tpl-$3\"))};",
       "  ${4:\\$templates[\"plugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_$3\"] = \\$tplCont;}",
       "}"
     ],
@@ -192,7 +251,7 @@
     "prefix": "fn_Cmd_Ajax",
     "body": [
       "${1:Add_Filter_Plugin('Filter_Plugin_Cmd_Ajax','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Ajax');}",
-      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Ajax(&\\$src)",
+      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Ajax(\\$src)",
       "{",
       "  if (\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\" !== \\$src) {",
       "    return;",
@@ -247,8 +306,13 @@
   },
   "Add_Filter_Plugin": {
     "prefix": "Add_Filter_Plugin",
-    "body": "Add_Filter_Plugin('$1','$2');",
+    "body": "Add_Filter_Plugin('$1','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_$2');",
     "description": "添加插件接口"
+  },
+  "Filter_Plugin_API_Begin": {
+    "prefix": "Filter_Plugin_API_Begin",
+    "body": "Filter_Plugin_API_Begin",
+    "description": "API"
   },
   "Filter_Plugin_Zbp_BuildTemplate": {
     "prefix": "Filter_Plugin_Zbp_BuildTemplate",
@@ -324,8 +388,13 @@
     "description": ""
   },
   "zbp-sethint": {
-    "prefix": ["zbp-sethint", "sethint"],
-    "body": ["\\$zbp->SetHint(\"tips${1: hint_always}\", \"$2\");"],
+    "prefix": [
+      "zbp-sethint",
+      "sethint"
+    ],
+    "body": [
+      "\\$zbp->SetHint(\"tips${1: hint_always}\", \"$2\");"
+    ],
     "description": "设置提示语"
   },
   // https://github.com/zblogcn/snippets
@@ -343,6 +412,11 @@
     "prefix": "zbp-BuildTemplate",
     "body": "\\$zbp->BuildTemplate();",
     "description": "重建模板编译"
+  },
+  "zbp-LoadModules": {
+    "prefix": "zbp-LoadModules",
+    "body": "\\$zbp->LoadModules();",
+    "description": "加载模块"
   },
   "zbp-CheckMemberByNameOrAliasExist": {
     "prefix": "zbp-CheckMemberByNameOrAliasExist",
