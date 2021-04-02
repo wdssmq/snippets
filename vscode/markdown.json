@@ -39,18 +39,21 @@
     ],
     "description": "`host`的定义说明"
   },
+  "git_search": {
+    "prefix": "git_search",
+    "body": "「[zblogcn/zblogphp/search?q=${1:内容}](https://github.com/zblogcn/zblogphp/search?q=${1:内容} \"Search · ${1:内容}\")」",
+    "description": "链接至 Git 搜索"
+  },
   "comer_brackets": {
     "prefix": [
-      "||"
+      "||",
     ],
     "body": "「${1:内容}」",
     "description": "输入`「」`用于着重某些内容"
   },
   "code": {
     "prefix": [
-      "code",
-      "``",
-      "@@"
+      "&&",
     ],
     "body": " `${1:code}` ",
     "description": "行内代码`code`"

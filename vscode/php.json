@@ -68,14 +68,14 @@
   "file_put_contents": {
     "prefix": "fput",
     "body": [
-      "file_put_contents(${1:\\$file},${2:\\$str});"
+      "file_put_contents(${2:\\$${1:file}},${4:\\$${3:str}});"
     ],
     "description": ""
   },
   "file_get_contents": {
     "prefix": "fget",
     "body": [
-      "file_get_contents(${1:\\$file})${2:;}"
+      "file_get_contents(${2:\\$${1:file}})${3:;}"
     ],
     "description": ""
   },
