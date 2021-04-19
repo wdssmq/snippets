@@ -1,6 +1,4 @@
 *.lnk
 *.code-workspace
 *.symlink
-html - 符号连接.json
-markdown - 符号连接.json
-php - 符号连接.json
+* - 符号连接.json

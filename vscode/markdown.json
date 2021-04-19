@@ -53,7 +53,8 @@
   },
   "code": {
     "prefix": [
-      "&&",
+      "\\\\",
+      "、、",
     ],
     "body": " `${1:code}` ",
     "description": "行内代码`code`"
@@ -77,5 +78,20 @@
     "prefix": "more",
     "body": "<!--more-->",
     "description": "摘要分隔"
+  },
+  "details": {
+    "prefix": [
+      "details",
+      "deta"
+    ],
+    "body": [
+      "<details>",
+      "<summary>$1${2:（点击展开）}</summary>",
+      "",
+      "${3: <!--内容-->}",
+      "",
+      "</details>"
+    ],
+    "description": "折叠内容"
   }
 }
