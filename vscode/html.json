@@ -14,63 +14,87 @@
   // }
   "php": {
     "prefix": "php",
-    "body": ["<?php $1;?>"],
+    "body": [
+      "<?php $1;?>"
+    ],
     "description": ""
   },
   // 模板标签
   "{$language}": {
     "prefix": "zbp_lang",
-    "body": ["{\\$language}"],
+    "body": [
+      "{\\$language}"
+    ],
     "description": ""
   },
   "{$host}": {
     "prefix": "zbp_host",
-    "body": ["{\\$host}"],
+    "body": [
+      "{\\$host}"
+    ],
     "description": ""
   },
   "{$tiitle}": {
     "prefix": "zbp_title",
-    "body": ["{\\$tiitle}"],
+    "body": [
+      "{\\$tiitle}"
+    ],
     "description": ""
   },
   "{$name}": {
     "prefix": "zbp_name",
-    "body": ["{\\$name}"],
+    "body": [
+      "{\\$name}"
+    ],
     "description": ""
   },
   "{$subname}": {
     "prefix": "zbp_subname",
-    "body": ["{\\$subname}"],
+    "body": [
+      "{\\$subname}"
+    ],
     "description": ""
   },
   "{$type}": {
     "prefix": "zbp_type",
-    "body": ["{\\$type}"],
+    "body": [
+      "{\\$type}"
+    ],
     "description": ""
   },
   "class_{$type}": {
     "prefix": "zbp_class_type",
-    "body": ["class=\"{\\$type}\""],
+    "body": [
+      "class=\"{\\$type}\""
+    ],
     "description": ""
   },
   "{$zblogphp}": {
     "prefix": "zbp_zblogphp",
-    "body": ["{\\$zblogphp}"],
+    "body": [
+      "{\\$zblogphp}"
+    ],
     "description": ""
   },
   "meta_{$zblogphp}": {
     "prefix": "zbp_meta_generator",
-    "body": ["<meta name=\"generator\" content=\"{\\$zblogphp}\">"],
+    "body": [
+      "<meta name=\"generator\" content=\"{\\$zblogphp}\">"
+    ],
     "description": ""
   },
   "{$footer}": {
     "prefix": "zbp_footer",
-    "body": ["{\\$footer}"],
+    "body": [
+      "{\\$footer}"
+    ],
     "description": ""
   },
   "{$header}": {
     "prefix": "zbp_header",
-    "body": ["{\\$header}"],
+    "body": [
+      "{\\$header}"
+    ],
     "description": ""
   },
   //

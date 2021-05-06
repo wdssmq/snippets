@@ -64,8 +64,8 @@
     "body": "<!--more-->",
     "description": "摘要分隔"
   },
-  "img": {
-    "prefix": "l-img",
+  "l_img": {
+    "prefix": "l_img",
     "body": "![$1]($1 \"$1\")",
     "description": "图片"
   },
