@@ -44,21 +44,6 @@
     "body": "「[zblogcn/zblogphp/search?q=${1:内容}](https://github.com/zblogcn/zblogphp/search?q=${1:内容} \"Search · ${1:内容}\")」",
     "description": "链接至 Git 搜索"
   },
-  "comer_brackets": {
-    "prefix": [
-      "||",
-    ],
-    "body": "「${1:内容}」",
-    "description": "输入`「」`用于着重某些内容"
-  },
-  "code": {
-    "prefix": [
-      "\\\\",
-      "、、",
-    ],
-    "body": " `${1:code}` ",
-    "description": "行内代码`code`"
-  },
   "**注：**": {
     "prefix": "**",
     "body": "**注：$1**",
@@ -79,6 +64,11 @@
     "body": "<!--more-->",
     "description": "摘要分隔"
   },
+  "img": {
+    "prefix": "l-img",
+    "body": "![$1]($1 \"$1\")",
+    "description": "图片"
+  },
   "details": {
     "prefix": [
       "details",
@@ -93,5 +83,15 @@
       "</details>"
     ],
     "description": "折叠内容"
+  },
+  "t_date": {
+    "prefix": [
+      "t_date"
+    ],
+    "body": [
+      "### $1",
+      "· $2"
+    ],
+    "description": ""
   }
 }
