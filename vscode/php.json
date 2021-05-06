@@ -262,7 +262,20 @@
       "  }",
       "}"
     ],
-    "description": "Cmd_Ajax接口函数"
+    "description": "Cmd_Ajax 接口函数"
+  },
+  "fn_AddTopMenu": {
+    "prefix": "fn_AddTopMenu",
+    "body": [
+      "${1:Add_Filter_Plugin('Filter_Plugin_Admin_TopMenu','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_AddTopMenu');}",
+      "",
+      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_AddTopMenu(&\\$m)",
+      "{",
+      "global \\$zbp;",
+      "\\$m[] = MakeTopMenu(\"root\", '$2', \\$zbp->host . \"zb_users/plugin/${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}/main.php\", \"\", \"topmenu_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\");",
+      "}"
+    ],
+    "description": "AddTopMenu 接口函数"
   },
   "fn_a": {
     "prefix": "fn_a",
