@@ -93,5 +93,21 @@
       "· $2"
     ],
     "description": ""
+  },
+  "code": {
+    "prefix": [
+      "code",
+      "``"
+    ],
+    "body": " `${1:code}` ",
+    "description": "行内代码`code`"
+  },
+  "php": {
+    "prefix": "php",
+    "body": [
+      "```php",
+      "$1",
+      "```"
+    ]
   }
 }

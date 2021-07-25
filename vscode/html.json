@@ -122,23 +122,31 @@
   // 引用其他模板
   "{template:header}": {
     "prefix": "tpl_header",
-    "body": ["{template:header}"],
+    "body": [
+      "{template:header}"
+    ],
     "description": ""
   },
   "{template:hero}": {
     "prefix": "tpl_hero",
-    "body": ["{template:hero}"],
+    "body": [
+      "{template:hero}"
+    ],
     "description": ""
   },
   "{template:footer}": {
     "prefix": "tpl_footer",
-    "body": ["{template:footer}"],
+    "body": [
+      "{template:footer}"
+    ],
     "description": ""
   },
   // 模块调用
   "{module:navbar}": {
     "prefix": "mod_navbar",
-    "body": ["{module:navbar}"],
+    "body": [
+      "{module:navbar}"
+    ],
     "description": ""
   },
   // 用于main.php
@@ -157,15 +165,31 @@
     ]
   },
   "textarea": {
-    "prefix": ["zbp_form_textarea"],
+    "prefix": [
+      "zbp_form_textarea",
+      "cfg_form_textarea"
+    ],
     "body": "<?php zbpform::textarea(\"$2\", htmlspecialchars(\\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2), \"90%\"); ?>"
   },
+  "text": {
+    "prefix": [
+      "zbp_form_text",
+      "cfg_form_text"
+    ],
+    "body": "<?php zbpform::text(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2, \"90%\"); ?>"
+  },
   "zbradio": {
-    "prefix": ["zbp_form_zbradio"],
+    "prefix": [
+      "zbp_form_zbradio",
+      "cfg_form_zbradio",
+    ],
     "body": "<?php zbpform::zbradio(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2); ?>"
   },
   "cfg_form": {
-    "prefix": ["cfg_form", "form_cfg"],
+    "prefix": [
+      "cfg_form",
+      "form_cfg"
+    ],
     "body": [
       " <form action=\"<?php echo BuildSafeURL(\"main.php?act=save\");?>\" method=\"post\">",
       "   <table width=\"100%\" class=\"tableBorder\">",
