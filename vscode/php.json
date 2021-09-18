@@ -75,7 +75,8 @@
   "file_get_contents": {
     "prefix": "fget",
     "body": [
-      "file_get_contents(${2:\\$${1:file}})${3:;}"
+      "\\$${1:file} = $2",
+      "\\$${3:content} = file_get_contents(${4:\\$${1:file}});"
     ],
     "description": ""
   },
@@ -272,6 +273,7 @@
       "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_AddTopMenu(&\\$m)",
       "{",
       "global \\$zbp;",
+      "// https://static.zblogcn.com/image/icon/demo.html",
       "\\$m[] = MakeTopMenu(\"root\", '$2', \\$zbp->host . \"zb_users/plugin/${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}/main.php\", \"\", \"topmenu_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\");",
       "}"
     ],
