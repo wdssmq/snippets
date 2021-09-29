@@ -90,7 +90,16 @@
     ],
     "body": [
       "### $1",
-      "· $2"
+      "$2"
+    ],
+    "description": ""
+  },
+  "README.md": {
+    "prefix": [
+      "README.md"
+    ],
+    "body": [
+      "README.md",
     ],
     "description": ""
   },

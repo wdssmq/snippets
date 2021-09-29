@@ -72,11 +72,31 @@
     ],
     "description": ""
   },
-  "file_get_contents": {
-    "prefix": "fget",
+  "fget_1": {
+    "prefix": [
+      "fget_1",
+      "file_get_contents_1"
+    ],
     "body": [
       "\\$${1:file} = $2",
       "\\$${3:content} = file_get_contents(${4:\\$${1:file}});"
+    ],
+    "description": ""
+  },
+  "fget_2": {
+    "prefix": [
+      "fget_2",
+      "file_get_contents_2"
+    ],
+    "body": [
+      "file_get_contents(${2:\\$${1:file}});"
+    ],
+    "description": ""
+  },
+  "zbp_option": {
+    "prefix": "zbp_option",
+    "body": [
+      "\\$zbp->option['$1']"
     ],
     "description": ""
   },
@@ -171,6 +191,16 @@
     ],
     "description": ""
   },
+  "isfile": {
+    "prefix": "isfile",
+    "body": [
+      "\\$file = $1;",
+      "if (!is_file(\\$file)) {",
+      "  ${2:#code}",
+      "}"
+    ],
+    "description": ""
+  },
   "init_file": {
     "prefix": "init_file",
     "body": [
@@ -206,16 +236,16 @@
       "function UpdatePlugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}()",
       "{",
       "  global \\$zbp;",
-      "  //\\$version = \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version;",
-      "  //if (\\$version !== 1.1) {",
-      "  //  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = 1.1;",
-      "  //  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
-      "  //}",
-      "  // cfg_haskey ← 单独使用",
-      "  if (!\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->HasKey(\"${1:newKey}\")) {",
-      "    \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:newKey} = ${2:'${3:value}'};",
+      "  \\$version = \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version;",
+      "  if (version_compare(\\$version, '${1:1.1}', \"<\")) {",
+      "    \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = '${1:1.1}';",
       "    \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
       "  }",
+      "  // cfg_haskey ← 单独使用",
+      "  // if (!\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->HasKey(\"newKey\")) {",
+      "  //   \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->newKey = \"newValue\";",
+      "  //   \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "  // }",
       "}",
       "// 旧版兼容",
       "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Updated()",
@@ -420,7 +450,7 @@
     "body": [
       "if (\\$zbp->template->hasTemplate(${2:\"$1\"})) {",
       "  ${3://code}",
-      "}",
+      "}"
     ],
     "description": "判断存在指定模板"
   },
