@@ -19,6 +19,15 @@
     ],
     "description": ""
   },
+  "zbp_php": {
+    "prefix": "zbp_php",
+    "body": [
+      "{php}<?php",
+      "$1",
+      "?>{/php}"
+    ],
+    "description": ""
+  },
   // 模板标签
   "{$language}": {
     "prefix": "zbp_lang",
