@@ -1,26 +1,62 @@
 {
-	// Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
-	"localStorage_read": {
-		"prefix": [
-			"ls_read",
-			"read_ls"
-		],
-		"body": [
-			"let ${1:code} = localStorage.${1:code} ? localStorage.${1:code} : \"${2:code}\";",
-			"console.log(${1:code});"
-		],
-		"description": "Log output to console"
-	}
+  // Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "lsObj": {
+    "prefix": "lsObj",
+    "body": [
+      "  // localStorage 封装",
+      "  const lsObj = {",
+      "    setItem: function (key, value) {",
+      "      localStorage.setItem(key, JSON.stringify(value));",
+      "    },",
+      "    getItem: function (key, def = \"\") {",
+      "      const item = localStorage.getItem(key);",
+      "      if (item) {",
+      "        return JSON.parse(item);",
+      "      }",
+      "      return def;",
+      "    },",
+      "  };"
+    ],
+    "description": "localStorage 封装"
+  },
+  "sleep": {
+    "prefix": "sleep",
+    "body": [
+      "const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));"
+    ],
+    "description": "延时函数"
+  },
+  "fnLog": {
+    "prefix": "fnLog",
+    "body": [
+      "  const _log = (...args) => console.log('[$1]', ...args);",
+      "  const _warn = (...args) => console.warn('[$1]', ...args);",
+      "  const _error = (...args) => console.error('[$1]', ...args);"
+    ],
+    "description": "log 输出封装"
+  },
+  "fnDom": {
+    "prefix": "fnDom",
+    "body": [
+      "  function \\$n(e) {",
+      "    return document.querySelector(e);",
+      "  }",
+      "  function \\$na(e) {",
+      "    return document.querySelectorAll(e);",
+      "  }"
+    ],
+    "description": "DOM 元素获取封装"
+  }
 }
