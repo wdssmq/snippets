@@ -2,3 +2,4 @@
 *.code-workspace
 *.symlink
 * - 符号连接.json
+.history

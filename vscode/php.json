@@ -3,7 +3,7 @@
   //   "prefix": "test",
   //   "body": [
   //     "${TM_FILENAME/(.*)\\..+$/$1/}",
-  //     "${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}",
+  //     "${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}",
   //     "$TM_FILENAME",
   //   ],
   //   "description": ""
@@ -107,10 +107,10 @@
     ],
     "body": [
       "${1:global \\$zbp;}",
-      "if (!\\$zbp->HasConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')) {",
-      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = 1;",
-      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${2:key}= \"$3\";",
-      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "if (!\\$zbp->HasConfig('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')) {",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->version = 1;",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->${2:key}= \"$3\";",
+      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}');",
       "}"
     ],
     "description": "初始化config"
@@ -120,7 +120,7 @@
       "cfg_read",
       "read_cfg"
     ],
-    "body": "\\$${1:key} = \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:key};"
+    "body": "\\$${1:key} = \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->${1:key};"
   },
   "cfg_write": {
     "prefix": [
@@ -128,8 +128,8 @@
       "write_cfg"
     ],
     "body": [
-      "\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:key} = ${2:'${3:value}'};",
-      "\\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');"
+      "\\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->${1:key} = ${2:'${3:value}'};",
+      "\\$zbp->SaveConfig('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}');"
     ]
   },
   "cfg_haskey": {
@@ -138,9 +138,9 @@
       "haskey_cfg"
     ],
     "body": [
-      "if (!\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->HasKey(\"${1:newKey}\")){",
-      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:newKey} = ${2:'${3:value}'};",
-      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "if (!\\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->HasKey(\"${1:newKey}\")){",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->${1:newKey} = ${2:'${3:value}'};",
+      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}');",
       "}"
     ]
   },
@@ -150,9 +150,9 @@
       "delkey_cfg"
     ],
     "body": [
-      "if (\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->DelKey(\"${1:keyName}\")){",
-      "  \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->${1:keyName};",
-      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "if (\\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->DelKey(\"${1:keyName}\")){",
+      "  \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->${1:keyName};",
+      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}');",
       "}"
     ]
   },
@@ -170,9 +170,9 @@
       "    if (substr(\\$key, 0, 5) == 'read_') {",
       "      continue;",
       "    }",
-      "    \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->\\$key = trim(\\$val);",
+      "    \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->\\$key = trim(\\$val);",
       "  }",
-      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}');",
       "  \\$zbp->BuildTemplate();",
       "  \\$zbp->SetHint('good');",
       "  Redirect('./main.php' . (\\$suc == null ? '' : \"?act={\\$suc}\"));",
@@ -206,8 +206,8 @@
     "body": [
       "\\$filesList = array(\"$1\");",
       "foreach (\\$filesList as \\$key => \\$value) {",
-      "  \\$uFile = ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\"u-{\\$value}\");",
-      "  \\$vFile = ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\"v-{\\$value}\");",
+      "  \\$uFile = ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_Path(\"u-{\\$value}\");",
+      "  \\$vFile = ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_Path(\"v-{\\$value}\");",
       "  if (!is_file(\\$uFile)) {",
       "    @mkdir(dirname(\\$uFile));",
       "    copy(\\$vFile, \\$uFile);",
@@ -219,7 +219,7 @@
   "fn_zbp": {
     "prefix": "fn_zbp",
     "body": [
-      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_${2:FunctionName}(${3:\\$var = null})",
+      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_${2:FunctionName}(${3:\\$var = null})",
       "{",
       "  ${4:# code...}",
       "}"
@@ -233,35 +233,35 @@
     ],
     "body": [
       "// 插件升级时执行",
-      "function UpdatePlugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}()",
+      "function UpdatePlugin_${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}()",
       "{",
       "  global \\$zbp;",
-      "  \\$version = \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version;",
+      "  \\$version = \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->version;",
       "  if (version_compare(\\$version, '${1:1.1}', \"<\")) {",
-      "    \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->version = '${1:1.1}';",
-      "    \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "    \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->version = '${1:1.1}';",
+      "    \\$zbp->SaveConfig('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}');",
       "  }",
       "  // cfg_haskey ← 单独使用",
-      "  // if (!\\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->HasKey(\"newKey\")) {",
-      "  //   \\$zbp->Config('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}')->newKey = \"newValue\";",
-      "  //   \\$zbp->SaveConfig('${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}');",
+      "  // if (!\\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->HasKey(\"newKey\")) {",
+      "  //   \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->newKey = \"newValue\";",
+      "  //   \\$zbp->SaveConfig('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}');",
       "  // }",
       "}",
       "// 旧版兼容",
-      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Updated()",
+      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_Updated()",
       "{",
-      "  UpdatePlugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}();",
+      "  UpdatePlugin_${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}();",
       "}"
     ]
   },
   "fn_GenTpl": {
     "prefix": "fn_GenTpl",
     "body": [
-      "${1:Add_Filter_Plugin('Filter_Plugin_Zbp_BuildTemplate','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_GenTpl');}",
-      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_GenTpl(&\\$templates)",
+      "${1:Add_Filter_Plugin('Filter_Plugin_Zbp_BuildTemplate','${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_GenTpl');}",
+      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_GenTpl(&\\$templates)",
       "{",
-      "  \\$tplCont = ${2:file_get_contents(${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\"tpl-$3\"))};",
-      "  ${4:\\$templates[\"plugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_$3\"] = \\$tplCont;}",
+      "  \\$tplCont = ${2:file_get_contents(${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_Path(\"tpl-$3\"))};",
+      "  ${4:\\$templates[\"plugin_${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_$3\"] = \\$tplCont;}",
       "}"
     ],
     "description": "BuildTemplate接口函数"
@@ -269,8 +269,8 @@
   "fn_ViewPost": {
     "prefix": "fn_ViewPost",
     "body": [
-      "${1:Add_Filter_Plugin('Filter_Plugin_ViewPost_Template','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_ViewPost');}",
-      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_ViewPost(&\\$template)",
+      "${1:Add_Filter_Plugin('Filter_Plugin_ViewPost_Template','${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_ViewPost');}",
+      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_ViewPost(&\\$template)",
       "{",
       "  \\$article = \\$template->GetTags('article');",
       "  ${3:\\$article->Content = $2;}",
@@ -281,10 +281,10 @@
   "fn_Cmd_Ajax": {
     "prefix": "fn_Cmd_Ajax",
     "body": [
-      "${1:Add_Filter_Plugin('Filter_Plugin_Cmd_Ajax','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Ajax');}",
-      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Ajax(\\$src)",
+      "${1:Add_Filter_Plugin('Filter_Plugin_Cmd_Ajax','${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_Ajax');}",
+      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_Ajax(\\$src)",
       "{",
-      "  if (\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\" !== \\$src) {",
+      "  if (\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\" !== \\$src) {",
       "    return;",
       "  }",
       "  \\$act = GetVars(\"act\", \"GET\");",
@@ -298,13 +298,13 @@
   "fn_AddTopMenu": {
     "prefix": "fn_AddTopMenu",
     "body": [
-      "${1:Add_Filter_Plugin('Filter_Plugin_Admin_TopMenu','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_AddTopMenu');}",
+      "${1:Add_Filter_Plugin('Filter_Plugin_Admin_TopMenu','${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_AddTopMenu');}",
       "",
-      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_AddTopMenu(&\\$m)",
+      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_AddTopMenu(&\\$m)",
       "{",
       "global \\$zbp;",
       "// https://static.zblogcn.com/image/icon/demo.html",
-      "\\$m[] = MakeTopMenu(\"root\", '$2', \\$zbp->host . \"zb_users/plugin/${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}/main.php\", \"\", \"topmenu_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\");",
+      "\\$m[] = MakeTopMenu(\"root\", '$2', \\$zbp->host . \"zb_users/plugin/${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}/main.php\", \"\", \"topmenu_${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\");",
       "}"
     ],
     "description": "AddTopMenu 接口函数"
@@ -312,7 +312,7 @@
   "fn_a": {
     "prefix": "fn_a",
     "body": [
-      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_a(\\$href, \\$title, \\$text = \"\")",
+      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_a(\\$href, \\$title, \\$text = \"\")",
       "{",
       "  if (empty(\\$text)) {",
       "    \\$text = \\$href;",
@@ -325,10 +325,10 @@
   "fn_path": {
     "prefix": "fn_path",
     "body": [
-      "function ${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_Path(\\$file, \\$t = 'path')",
+      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_Path(\\$file, \\$t = 'path')",
       "{",
       "  global \\$zbp;",
-      "  \\$result = \\$zbp->\\$t . 'zb_users/plugin/${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}/';",
+      "  \\$result = \\$zbp->\\$t . 'zb_users/plugin/${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}/';",
       "  switch (\\$file) {",
       "    case '${2:file}':",
       "      return \\$result . '${3:file}';",
@@ -351,7 +351,7 @@
   },
   "Add_Filter_Plugin": {
     "prefix": "Add_Filter_Plugin",
-    "body": "Add_Filter_Plugin('$1','${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_$2');",
+    "body": "Add_Filter_Plugin('$1','${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_$2');",
     "description": "添加插件接口"
   },
   "Filter_Plugin_API_Begin": {
@@ -397,7 +397,7 @@
     "body": [
       "\\$${2:item} = ${1:'content'};",
       "\\$zbp->template->SetTags('${2:item}', \\$${2:item});",
-      "\\$rlt = \\$zbp->template->Output(\"plugin_${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}_$3\");"
+      "\\$rlt = \\$zbp->template->Output(\"plugin_${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_$3\");"
     ],
     "description": "复用模板机制生成内容"
   },
