@@ -138,6 +138,15 @@
       "haskey_cfg"
     ],
     "body": [
+      "\\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->HasKey(\"${1:newKey}\")"
+    ]
+  },
+  "cfg_haskey_if": {
+    "prefix": [
+      "cfg_haskey_if",
+      "haskey_cfg_if"
+    ],
+    "body": [
       "if (!\\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->HasKey(\"${1:newKey}\")){",
       "  \\$zbp->Config('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}')->${1:newKey} = ${2:'${3:value}'};",
       "  \\$zbp->SaveConfig('${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}');",
