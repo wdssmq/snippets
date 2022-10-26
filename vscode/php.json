@@ -463,6 +463,16 @@
     ],
     "description": "判断存在指定模板"
   },
+  "zbp-CheckPlugin": {
+    "prefix": [
+      "zbp-CheckPlugin",
+      "CheckPlugin"
+    ],
+    "body": [
+      "\\$zbp->CheckPlugin(\"${1:plugin}\")"
+    ],
+    "description": "检查插件是否启用"
+  },
   // https://github.com/zblogcn/snippets
   "zbp-GetCSRFToken": {
     "prefix": [
