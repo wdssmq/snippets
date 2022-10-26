@@ -178,21 +178,21 @@
       "zbp_form_textarea",
       "cfg_form_textarea"
     ],
-    "body": "<?php zbpform::textarea(\"$2\", htmlspecialchars(\\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2), \"90%\"); ?>"
+    "body": "<?php zbpform::textarea(\"$2\", htmlspecialchars(\\$zbp->Config(\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\")->$2), \"90%\"); ?>"
   },
   "text": {
     "prefix": [
       "zbp_form_text",
       "cfg_form_text"
     ],
-    "body": "<?php zbpform::text(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2, \"90%\"); ?>"
+    "body": "<?php zbpform::radio(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\")->$2, \"90%\"); ?>"
   },
   "zbradio": {
     "prefix": [
       "zbp_form_zbradio",
-      "cfg_form_zbradio",
+      "cfg_form_zbradio"
     ],
-    "body": "<?php zbpform::zbradio(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2); ?>"
+    "body": "<?php zbpform::zbradio(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\")->$2); ?>"
   },
   "cfg_form": {
     "prefix": [
@@ -209,7 +209,7 @@
       "   </tr>",
       "   <tr>",
       "     <td>$1</td>",
-      "     <td><?php zbpform::text(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+\\\\(\\w+)$/$1/}\")->$2, \"90%\"); ?></td>",
+      "     <td><?php zbpform::text(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\")->$2, \"90%\"); ?></td>",
       "     <td></td>",
       "   </tr>",
       "   <tr>",
