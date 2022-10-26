@@ -226,7 +226,10 @@
     "description": ""
   },
   "fn_zbp": {
-    "prefix": ["fn_zbp", "zbp_fn"],
+    "prefix": [
+      "fn_zbp",
+      "zbp_fn"
+    ],
     "body": [
       "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_${2:FunctionName}(${3:\\$var = null})",
       "{",
