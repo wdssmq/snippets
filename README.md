@@ -11,6 +11,8 @@ https://github.com/wdssmq/snippets
 
 ## 使用效果
 
+> Z-BlogPHP 自用代码片段演示：[https://www.bilibili.com/video/BV1iv4y1K7iy](https://www.bilibili.com/video/BV1iv4y1K7iy "Z-BlogPHP 自用代码片段演示")
+
 ![image](files/demo-vscode.gif)
 
 ## 下载代码片段
