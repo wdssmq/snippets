@@ -7,6 +7,9 @@ Z-Blog 代码提示片段。
 wdssmq/snippets: Z-Blog 编辑器代码提示片段
 https://github.com/wdssmq/snippets
 
+Z-BlogPHP 自用代码片段演示_哔哩哔哩_bilibili
+https://www.bilibili.com/video/BV1iv4y1K7iy
+
 -->
 
 ## 使用效果
