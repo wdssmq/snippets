@@ -187,6 +187,13 @@
     ],
     "body": "<?php zbpform::radio(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\")->$2, \"90%\"); ?>"
   },
+  "radio": {
+    "prefix": [
+      "zbp_form_radio",
+      "cfg_form_radio"
+    ],
+    "body": "<?php zbpform::zbradio(\"$2\", array(\"one\" => \"选项一\", \"two\" => \"选项二\"), \\$zbp->Config(\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\")->$2); ?>"
+  },
   "zbradio": {
     "prefix": [
       "zbp_form_zbradio",
