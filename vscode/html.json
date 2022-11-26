@@ -187,12 +187,12 @@
     ],
     "body": "<?php zbpform::radio(\"$2\", \\$zbp->Config(\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\")->$2, \"90%\"); ?>"
   },
-  "radio": {
+  "select": {
     "prefix": [
-      "zbp_form_radio",
-      "cfg_form_radio"
+      "zbp_form_select",
+      "cfg_form_select"
     ],
-    "body": "<?php zbpform::zbradio(\"$2\", array(\"one\" => \"选项一\", \"two\" => \"选项二\"), \\$zbp->Config(\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\")->$2); ?>"
+    "body": "<?php zbpform::select(\"$2\", array(\"one\" => \"选项一\", \"two\" => \"选项二\"), \\$zbp->Config(\"${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}\")->$2); ?>"
   },
   "zbradio": {
     "prefix": [
