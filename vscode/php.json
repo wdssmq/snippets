@@ -324,12 +324,15 @@
   "fn_a": {
     "prefix": "fn_a",
     "body": [
-      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_a(\\$href, \\$title, \\$text = \"\")",
+      "function ${TM_DIRECTORY/.+[\\\\/](\\w+)$/$1/}_a(\\$href, \\$title, \\$text = \"\", \\$target = \"_blank\")",
       "{",
       "  if (empty(\\$text)) {",
       "    \\$text = \\$href;",
+      "  } elseif (\\$text === \"_title\") {",
+      "    \\$text = \\$title;",
       "  }",
-      "  return \"<a target=\\\"_blank\\\" href=\\\"{\\$href}\\\" title=\\\"{\\$title}\\\">\\$text</a>\";",
+      "  \\$target = empty(\\$target) ? \"\" : \" target=\\\"\\$target\\\"\";",
+      "  return \"<a {\\$target} href=\\\"{\\$href}\\\" title=\\\"{\\$title}\\\">\\$text</a>\";",
       "}"
     ],
     "description": "用于拼接点击链接"
