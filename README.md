@@ -14,7 +14,9 @@ https://www.bilibili.com/video/BV1iv4y1K7iy
 
 ## 使用效果
 
-> Z-BlogPHP 自用代码片段演示：[https://www.bilibili.com/video/BV1iv4y1K7iy](https://www.bilibili.com/video/BV1iv4y1K7iy "Z-BlogPHP 自用代码片段演示")
+> 「视频」Z-BlogPHP 自用代码片段演示：[https://www.bilibili.com/video/BV1iv4y1K7iy](https://www.bilibili.com/video/BV1iv4y1K7iy "Z-BlogPHP 自用代码片段演示")
+>
+> **更多 Gif 演示：[https://github.com/wdssmq/snippets/tree/master/gif](https://github.com/wdssmq/snippets/tree/master/gif "snippets/gif at master · wdssmq/snippets")**
 
 ![image](files/demo-vscode.gif)
 
