@@ -12,6 +12,13 @@
   // 	],
   // 	"description": "Log output to console"
   // }
+  "gobVars": {
+    "prefix": "gobVars",
+    "body": [
+      "/* global $1 */"
+    ],
+    "description": "全局变量声明"
+  },
   "lsObj": {
     "prefix": "lsObj",
     "body": [
