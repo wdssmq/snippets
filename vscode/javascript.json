@@ -12,6 +12,15 @@
   // 	],
   // 	"description": "Log output to console"
   // }
+  "iife": {
+    "prefix": "iife",
+    "body": [
+      "(() => {",
+      "\t$1",
+      "})();"
+    ],
+    "description": "立即执行函数"
+  },
   "gobVars": {
     "prefix": "gobVars",
     "body": [
