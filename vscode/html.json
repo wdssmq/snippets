@@ -15,7 +15,7 @@
   "php": {
     "prefix": "php",
     "body": [
-      "<?php $1;?>"
+      "<?php ${1:\n$2\n}?>"
     ],
     "description": ""
   },
